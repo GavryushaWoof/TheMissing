@@ -13,13 +13,19 @@ export default {
     return {
       nameGame: "The Missing"
     };
-  }
+  },
+  beforeCreate: function() {
+    if(!document.body.classList.length>0){
+      document.body.classList= 'newGame';
+    }else{
+      document.body.classList.replace( document.body.classList[0], 'newGame');
+        }
+    }
 };
 </script>
 
-<style lang='css' scoped>
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-body {
+<style>
+.newGame {
   font-family: cursive;
   background-repeat: repeat;
   background-position: center center;
@@ -28,6 +34,11 @@ body {
   background-image: url("http://localhost:8000/dist/background/start1.png");
   user-select: none;
 }
+
+</style>
+
+<style lang='css' scoped>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 img {
   width: 300px;
 }

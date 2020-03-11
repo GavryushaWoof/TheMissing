@@ -1,7 +1,7 @@
 <template>
 <div>
     <comp :name='speaker' :text='text' :root='root' @click.native='nextText(root)' />
-    <button @click.native="console.log('hi')">&#10158;</button>
+  
 </div>
 </template>
 <script>
@@ -20,12 +20,18 @@ export default {
      nextText(name){
        console.log(name)
      }
+    },
+  beforeCreate: function() {
+    if(!document.body.classList.length>0){
+      document.body.classList= 'room';
+    }else{
+      document.body.classList.replace( document.body.classList[0], 'room');
+        }
     }
  }
 </script>
-
-<style lang='css' scoped>
-body {
+<style>
+.room {
   font-family: cursive;
   background-repeat: repeat;
   background-position: center center;
@@ -34,4 +40,6 @@ body {
   background-image: url('http://localhost:8000/dist/background/room.jpg');
   user-select: none;
 }
+</style>
+<style lang='css' scoped>
 </style>
