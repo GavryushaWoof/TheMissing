@@ -25,7 +25,7 @@ export default {
     if(!document.body.classList.length>0){
       document.body.classList.add('room');
     }else{
-      document.body.classList.replace( document.body.classList[0], 'room');
+      document.body.classList.replace(document.body.classList[0], 'room');
         }
     }
  }
