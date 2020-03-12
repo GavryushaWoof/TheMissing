@@ -1,34 +1,64 @@
 <template>
-<div>
-    <comp :name='speaker' :text='text' :root='root' @click.native='nextText(root)' />
-  
-</div>
+  <div>
+    <comp :name='speaker' :text='text' :src='src' @nextText="nextText" />
+
+  </div>
 </template>
 <script>
-import comp from './comp.vue';
+import { addContent } from "./../content.js";
+import comp from "./comp.vue";
 export default {
   components: {
-    comp,  
-    },
-   data () {
+    comp
+  },
+  data() {
     return {
-      speaker: 'User',
-      text:'Жила была бабушка и было у нее два гуся один черный другой белый два веселых гуся',
-      root:'Room'
-    }},
-    methods:{
-     nextText(name){
-       console.log(name)
-     }
+      speaker: "",
+      text: "",
+      src: "",
+      root: "room",
+      i: 0
+    };
+  },
+  methods: {
+    nextText() {
+      return (this.i += 1);
     },
-  beforeCreate: function() {
-    if(!document.body.classList.length>0){
-      document.body.classList.add('room');
-    }else{
-      document.body.classList.replace(document.body.classList[0], 'room');
-        }
+    createdContent() {
+      let content = addContent(
+        this.root,
+        this.speaker,
+        this.i,
+        this.text,
+        this.src
+      );
+      if (content !== null) {
+        this.speaker = content.name;
+        this.text = content.text;
+        this.src = content.src;
+      } else {
+        this.nextRoot();
+      }
+    },
+    nextRoot() {
+      this.$router.push({ path: "/" });
     }
- }
+  },
+
+  watch: {
+    i: "createdContent"
+  },
+  beforeCreate: function() {
+    if (!document.body.classList.length > 0) {
+      document.body.classList.add("room");
+    } else {
+      document.body.classList.replace(document.body.classList[0], "room");
+    }
+  },
+  created: function() {
+    this.createdContent();
+  }
+};
 </script>
 <style>
 .room {
@@ -37,7 +67,7 @@ export default {
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url('http://localhost:8000/dist/background/room.jpg');
+  background-image: url("http://localhost:8000/dist/background/room.jpg");
   user-select: none;
 }
 </style>

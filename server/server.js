@@ -11,6 +11,6 @@ app.use('/dist', express.static('assets'));
 //     res.sendFile(filePath);
 // });
 app.get('*', (req, res) => {
-    res.send('hello')
+    res.end()
 });
 app.listen(8000);
