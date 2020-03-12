@@ -16,7 +16,7 @@ export default {
   },
   beforeCreate: function() {
     if(!document.body.classList.length>0){
-      document.body.classList= 'newGame';
+      document.body.classList.add('newGame');
     }else{
       document.body.classList.replace( document.body.classList[0], 'newGame');
         }
