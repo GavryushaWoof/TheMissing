@@ -1,22 +1,37 @@
 <template>
   <div>
     <div>
-      <img class="misty" :src='src'>
+      <img class="speaker" :src='src'>
     </div>
     <div id=container>
       <div>
         <p class="name">{{name}}</p>
       </div>
       <div class="conteinerInput">
-        <input type="text" @input="$emit('input', $event)" placeholder='Введите имя' value>
+        <input type="text" @input="onInput" placeholder='Введите имя' value>
       </div>
-      <button @click="$emit('nextText')">&#10158;</button>
+      <button @click="$emit('nextText')" :disabled='disabledButton'>&#10158;</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ["name", "src"]
+  data() {
+    return {
+      disabledButton: true
+    };
+  },
+  props: ["name", "src"],
+  methods: {
+    onInput(value) {
+      if (value.target.value.length < 2) {
+        this.disabledButton = true;
+      } else {
+        this.$emit("input", value);
+        this.disabledButton = false;
+      }
+    }
+  }
 };
 </script>
 

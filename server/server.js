@@ -5,7 +5,7 @@ import path from 'path';
 const app = express();
 app.use(cors());
 app.use('/dist', express.static('assets'));
-// app.get('/api/:name', (req, res) => {
+// app.get('/dist/:name', (req, res) => {
 //     const { name } = req.params;
 //     const filePath = path.join(__dirname, '../assets/', name);
 //     res.sendFile(filePath);

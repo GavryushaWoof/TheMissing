@@ -1,54 +1,49 @@
 <template>
   <div>
     <div>
-      <img class="misty" :src='src'>
+      <img class="speaker" :src='src'>
     </div>
     <div id=container>
       <div>
         <p class="name">{{name}}</p>
       </div>
-      <div>
-        <p class="text">{{text}}</p>
+      <div class="conteinerRadio">
+        <label v-for="(pokemon, index) in pokemons" :key="index">
+          <input type="radio" name="whoIsPokemon" :value="index" @change="onRadio">
+          <img class="gif" :src="pokemon.gif">
+          <span>{{pokemon.name}}</span>
+        </label>
       </div>
-      <div v-if="text==='' && player===false">
-        <input type="text" @input="$emit('input', $event)" placeholder='Введите имя' value>
-      </div>
-      <button @click="$emit('nextText')">&#10158;</button>
+      <button @click="$emit('nextText')" :disabled='disabledButton'>&#10158;</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ["name", "text", "src", "player"]
+  data() {
+    return {
+      disabledButton: true
+    };
+  },
+  props: ["name", "src", "pokemons"],
+  methods: {
+    onRadio(i) {
+      this.$emit("change", this.$props.pokemons[i.target.value]);
+      this.disabledButton = false;
+    }
+  }
 };
 </script>
 
 <style lang='css' scoped>
-.text {
-  margin: 5px 20px 0px;
+.conteinerRadio {
+  display: flex;
+  justify-content: center;
 }
-
-#container {
-  font-size: 1.5em;
-  height: 15vw;
-  padding: 5px;
-  background: #c4e6f3e6;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.gif {
+  height: 60px;
 }
-
-button {
-  height: 100px;
-  width: 100px;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  border: none;
-  background: none;
-  font-size: 3em;
+label {
+  margin: 0 20px 0;
 }
 </style>

@@ -6,7 +6,7 @@ const content = {
         },
         {
             name: 'Мисти',
-            text: 'О ты наконец очнулся. Как тебя зовут?',
+            text: 'О, ты наконец очнулся. Как тебя зовут?',
             player: false,
             img: 'http://localhost:8000/dist/person/Misty_OS.png'
         },
@@ -59,6 +59,36 @@ const content = {
         },
     ],
 }
+export const pokemons = [{
+        name: 'Бульбазавр',
+        type: 'трава',
+        background: 'http://localhost:8000/dist/background/bulbasaurBackground.jpg',
+        img: 'http://localhost:8000/dist/pokemon/bulbasaur.png',
+        gif: 'http://localhost:8000/dist/pokemon/bulbasaur.gif',
+    },
+    {
+        name: 'Чармандер',
+        type: 'огонь',
+        background: 'http://localhost:8000/dist/background/charmanderBackground.png',
+        img: 'http://localhost:8000/dist/pokemon/charmande.png',
+        gif: 'http://localhost:8000/dist/pokemon/charmander.gif',
+    },
+    {
+        name: 'Сквиртл',
+        type: 'вода',
+        background: 'http://localhost:8000/dist/background/squirtleBackground.jpg',
+        img: 'http://localhost:8000/dist/pokemon/squirtle.png',
+        gif: 'http://localhost:8000/dist/pokemon/squirtle.gif',
+    },
+    {
+        name: 'Пикачу',
+        type: 'электричество',
+        background: 'http://localhost:8000/dist/background/pikachuBackground.jpg',
+        img: 'http://localhost:8000/dist/pokemon/pikachu.png',
+        gif: 'http://localhost:8000/dist/pokemon/pikachu.gif',
+    },
+]
+
 
 
 export function addContent(root, i, src) {

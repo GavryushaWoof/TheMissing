@@ -2,13 +2,13 @@
   <div>
     <compCommon>
       <compInput v-if="text==='' && player===false" :name='speaker' :src='src' @input="userName($event.target.value)" @nextText="nextText" />
-      <!-- <compRadio v-else-if="text==='' && player===true" /> -->
+      <compRadio v-else-if="text==='' && player===true" :name='speaker' :src='src' :pokemons='arrPokemons' @change="choosePokemon" @nextText="nextText" />
       <compText v-else :name='speaker' :text='text' :src='src' @nextText="nextText" />
     </compCommon>
   </div>
 </template>
 <script>
-import { addContent } from "./../content.js";
+import { addContent, pokemons } from "./../content.js";
 import compCommon from "./СompСommon.vue";
 import compInput from "./СompInput.vue";
 import compRadio from "./СompRadio.vue";
@@ -27,7 +27,8 @@ export default {
       src: "",
       root: "room",
       player: "",
-      i: 0
+      i: 0,
+      arrPokemons: pokemons
     };
   },
   methods: {
@@ -44,6 +45,9 @@ export default {
       } else {
         this.nextRoot();
       }
+    },
+    choosePokemon(value) {
+      sessionStorage.setItem("pokemon", JSON.stringify(value));
     },
     nextRoot() {
       this.$router.push({ path: "/" });

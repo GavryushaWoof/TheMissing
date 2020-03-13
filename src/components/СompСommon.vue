@@ -7,7 +7,7 @@
 </script>
 
 <style lang='css'>
-.misty {
+.speaker {
   height: 45.5vw;
   position: fixed;
   bottom: 0px;
