@@ -14,12 +14,15 @@ export default {
     };
   },
   beforeCreate: function() {
-    if(!document.body.classList.length>0){
-      document.body.classList.add('newGame');
-    }else{
-      document.body.classList.replace(document.body.classList[0], 'newGame');
-        }
+    if (!document.body.classList.length > 0) {
+      document.body.classList.add("newGame");
+    } else {
+      document.body.classList.replace(document.body.classList[0], "newGame");
     }
+  },
+  created: function() {
+    sessionStorage.clear();
+  }
 };
 </script>
 
@@ -33,7 +36,6 @@ export default {
   background-image: url("http://localhost:8000/dist/background/start1.png");
   user-select: none;
 }
-
 </style>
 
 <style lang='css' scoped>
@@ -56,19 +58,18 @@ h1 {
   text-shadow: 0px 0px 5px #fff, 0px 0px 7px #fff;
 }
 
-
 @keyframes floating {
   from {
     transform: translate(0, 0px) rotateY(-22deg);
-    text-shadow: 10px 10px 3px rgba(0,0,0,0.15);
+    text-shadow: 10px 10px 3px rgba(0, 0, 0, 0.15);
   }
   65% {
     transform: translate(0, 15px) rotateY(20deg) rotateX(10deg);
-    text-shadow: -10px -10px 3px rgba(0,0,0,0.15);
+    text-shadow: -10px -10px 3px rgba(0, 0, 0, 0.15);
   }
   to {
     transform: translate(0, 0px) rotateY(-22deg);
-    text-shadow: 10px 10px 3px rgba(0,0,0,0.15);
+    text-shadow: 10px 10px 3px rgba(0, 0, 0, 0.15);
   }
 }
 </style>

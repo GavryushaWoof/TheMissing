@@ -1,7 +1,7 @@
 const content = {
     room: [{
             name: '',
-            text: 'Что сколько я проспал? Где я?',
+            text: 'Черт, как болят глаза. Что, сколько я проспал? Где я?',
             player: false,
         },
         {
@@ -17,18 +17,18 @@ const content = {
         },
         {
             name: 'Мисти',
-            text: 'Приятно познакомиться. Я Мисти лучший рыболов и повец покемонов водного типа в этой деревне',
+            text: 'Я Мисти лучший рыболов и повец покемонов водного типа в этой деревне. Приятно познакомиться.',
             player: false,
             img: 'http://localhost:8000/dist/person/Misty_pokemon.png'
         },
         {
             name: 'Мисти',
-            text: 'Что стобой произошло? Мы нашли тебя на входе в деревню.',
+            text: 'Что с тобой произошло? Мы нашли тебя на входе в деревню.',
             player: false,
         },
         {
             name: '',
-            text: 'Дорога потребовала больше сил и времени чем я планировал. Так что я просто свалился без чувств, когда понял что дошел. Извини за причиненные неудобства.',
+            text: 'Дорога потребовала больше сил и времени, чем я планировал. Так что я просто свалился без чувств, когда понял, что дошел. Прости.',
             player: true,
         },
         {
@@ -60,20 +60,22 @@ const content = {
     ],
 }
 
-window.addContent = addContent;
 
-export function addContent(root, name, i, text, src) {
+export function addContent(root, i, src) {
     if (i < content[root].length) {
+        let text = '';
+        let name = '';
+        let player = content[root][i].player;
         if (!content[root][i].player) {
             name = content[root][i].name;
         } else {
-            name = sessionStorage.getItem(name)
+            name = sessionStorage.getItem('name')
         }
         text = content[root][i].text;
         if (content[root][i].img) {
             src = content[root][i].img
         }
-        return { name, text, src }
+        return { name, text, src, player }
     } else {
         return null
     }
