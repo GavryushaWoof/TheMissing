@@ -76,34 +76,52 @@ const content = {
         text: 'Думаю, [[pokemonName]] не отправился бы туда. Хм, стоит проверить данные в покедексе еще раз.',
         player: true,
         img: 'http://localhost:8000/dist/things/pokedex.png'
-    }, ]
+    }, ],
+    selectedRoom: [{
+            name: '',
+            text: '[[pokemonName]] должен быть где-то здесь.',
+            player: true,
+
+        },
+        {
+            name: '',
+            text: 'Оу вот ты где. Не убегай больше.',
+            player: true,
+            img: '[[pokemonImg]]'
+        },
+        {
+            name: '[[pokemonName]]',
+            text: '[[pokemonName]] рад, что его нашли',
+            player: false,
+        },
+    ]
 }
 export const pokemons = [{
         name: 'Бульбазавр',
         type: 'трава',
         background: 'http://localhost:8000/dist/background/bulbasaurBackground.jpg',
-        img: 'http://localhost:8000/dist/pokemon/bulbasaur.png',
+        img: 'http://localhost:8000/dist/pokemon/Bulbasaur.png',
         gif: 'http://localhost:8000/dist/pokemon/bulbasaur.gif',
     },
     {
         name: 'Чармандер',
         type: 'огонь',
-        background: 'http://localhost:8000/dist/background/charmanderBackground.png',
-        img: 'http://localhost:8000/dist/pokemon/charmande.png',
+        background: 'http://localhost:8000/dist/background/charmanderBackground.jpg',
+        img: 'http://localhost:8000/dist/pokemon/Charmander.png',
         gif: 'http://localhost:8000/dist/pokemon/charmander.gif',
     },
     {
         name: 'Сквиртл',
         type: 'вода',
         background: 'http://localhost:8000/dist/background/squirtleBackground.jpg',
-        img: 'http://localhost:8000/dist/pokemon/squirtle.png',
+        img: 'http://localhost:8000/dist/pokemon/Squirtle.png',
         gif: 'http://localhost:8000/dist/pokemon/squirtle.gif',
     },
     {
         name: 'Пикачу',
         type: 'электричество',
         background: 'http://localhost:8000/dist/background/pikachuBackground.jpg',
-        img: 'http://localhost:8000/dist/pokemon/pikachu.png',
+        img: 'http://localhost:8000/dist/pokemon/Pikachu.png',
         gif: 'http://localhost:8000/dist/pokemon/pikachu.gif',
     },
 ]
@@ -139,12 +157,15 @@ export function addContent(root, i, src) {
         }
         const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
         text = content[root][i].text;
+        if (content[root][i].img) {
+            src = content[root][i].img
+        }
         if (pokemon) {
             text = text.replace('[[pokemonType]]', pokemon.type);
             text = text.replace('[[pokemonName]]', pokemon.name);
-        }
-        if (content[root][i].img) {
-            src = content[root][i].img
+            name = name.replace('[[pokemonName]]', pokemon.name);
+            src = src.replace('[[pokemonImg]]', pokemon.img);
+
         }
         return { name, text, src, player }
     } else {

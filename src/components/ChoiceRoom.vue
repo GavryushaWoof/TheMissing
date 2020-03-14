@@ -61,7 +61,7 @@ export default {
   background-repeat: repeat;
   background-position: center center;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: 100% 100%;
   background-image: url("http://localhost:8000/dist/background/room.jpg");
   user-select: none;
 }

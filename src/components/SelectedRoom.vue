@@ -1,34 +1,28 @@
 <template>
   <div>
     <compCommon>
-      <compInput v-if="text==='' && player===false" :name='speaker' :src='src' @input="userName($event.target.value)" @nextText="nextText" />
-      <compRadio v-else-if="text==='' && player===true" :name='speaker' :src='src' :pokemons='arrPokemons' @change="choosePokemon" @nextText="nextText" />
-      <compText v-else :name='speaker' :text='text' :src='src' @nextText="nextText" />
+      <compText :name='speaker' :text='text' :src='src' @nextText="nextText" />
     </compCommon>
   </div>
 </template>
 <script>
-import { addContent, pokemons } from "./../content.js";
+import { addContent } from "./../content.js";
 import compCommon from "./СompСommon.vue";
-import compInput from "./СompInput.vue";
-import compRadio from "./СompRadio.vue";
 import compText from "./СompText.vue";
 export default {
   components: {
     compCommon,
-    compText,
-    compInput,
-    compRadio
+    compText
   },
   data() {
     return {
       speaker: "",
       text: "",
       src: "",
-      root: "room",
-      player: "",
+      root: "selectedRoom",
       i: 0,
-      arrPokemons: pokemons
+      background: {},
+      backgroundImg: ""
     };
   },
   methods: {
@@ -46,14 +40,8 @@ export default {
         this.nextRoot();
       }
     },
-    choosePokemon(value) {
-      sessionStorage.setItem("pokemon", JSON.stringify(value));
-    },
     nextRoot() {
-      this.$router.push({ path: "/choiceRoom" });
-    },
-    userName(value) {
-      sessionStorage.setItem("name", value);
+      this.$router.push({ path: "/gameOver" });
     }
   },
 
@@ -62,9 +50,15 @@ export default {
   },
   beforeCreate: function() {
     if (!document.body.classList.length > 0) {
-      document.body.classList.add("room");
+      document.body.classList.add("selectedRoom");
     } else {
-      document.body.classList.replace(document.body.classList[0], "room");
+      document.body.classList.replace(
+        document.body.classList[0],
+        "selectedRoom"
+      );
+      document.getElementsByTagName("body")[0].style.backgroundImage = `url(${
+        JSON.parse(sessionStorage.getItem("pokemon")).background
+      })`;
     }
   },
   created: function() {
@@ -73,13 +67,12 @@ export default {
 };
 </script>
 <style>
-.room {
+.selectedRoom {
   font-family: cursive;
   background-repeat: repeat;
   background-position: center center;
   background-attachment: fixed;
   background-size: 100% 100%;
-  background-image: url("http://localhost:8000/dist/background/room.jpg");
   user-select: none;
 }
 </style>
