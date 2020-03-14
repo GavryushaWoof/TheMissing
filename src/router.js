@@ -5,7 +5,6 @@ import Room from './components/Room.vue'
 import ChoiceRoom from './components/ChoiceRoom.vue'
 import SelectedRoom from './components/SelectedRoom.vue'
 import WrongRoom from './components/WrongRoom.vue'
-import GameOver from './components/GameOver.vue'
 Vue.use(VueRouter)
 export const router = new VueRouter({
     routes: [{
@@ -27,10 +26,6 @@ export const router = new VueRouter({
         {
             path: '/wrongRoom',
             component: WrongRoom
-        },
-        {
-            path: '/gameOver',
-            component: GameOver
         },
     ]
 })

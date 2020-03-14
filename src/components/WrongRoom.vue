@@ -33,7 +33,6 @@ export default {
         this.speaker = content.name;
         this.text = content.text;
         this.src = content.src;
-        this.player = content.player;
       } else {
         this.nextRoot();
       }

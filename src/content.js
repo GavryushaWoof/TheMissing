@@ -91,10 +91,10 @@ const content = {
         },
         {
             name: '[[pokemonName]]',
-            text: '[[pokemonName]] рад, что его нашли',
+            text: '[[pokemonName]] рад, что его нашли.',
             player: false,
         },
-    ]
+    ],
 }
 export const pokemons = [{
         name: 'Бульбазавр',
