@@ -20,9 +20,7 @@ export default {
       text: "",
       src: "",
       root: "selectedRoom",
-      i: 0,
-      background: {},
-      backgroundImg: ""
+      i: 0
     };
   },
   methods: {

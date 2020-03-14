@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <img class="speaker" :src='src'>
+      <img name='img' class="speaker" :src='src'>
     </div>
     <div id=container>
       <div>

@@ -46,6 +46,7 @@ export default {
   beforeCreate: function() {
     document.getElementsByTagName("body")[0].style.backgroundImage =
       'url("http://localhost:8000/dist/background/room.jpg")';
+    // document.img.classList.replace(document.img.classList[0], "thing");
   },
   created: function() {
     this.createdContent();
