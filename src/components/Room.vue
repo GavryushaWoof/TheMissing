@@ -61,25 +61,11 @@ export default {
     i: "createdContent"
   },
   beforeCreate: function() {
-    if (!document.body.classList.length > 0) {
-      document.body.classList.add("room");
-    } else {
-      document.body.classList.replace(document.body.classList[0], "room");
-    }
+    document.getElementsByTagName("body")[0].style.backgroundImage =
+      'url("http://localhost:8000/dist/background/room.jpg")';
   },
   created: function() {
     this.createdContent();
   }
 };
 </script>
-<style>
-.room {
-  font-family: cursive;
-  background-repeat: repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  background-image: url("http://localhost:8000/dist/background/room.jpg");
-  user-select: none;
-}
-</style>

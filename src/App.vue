@@ -16,4 +16,14 @@ export default {
   }
 };
 </script>
+<style>
+body {
+  font-family: cursive;
+  background-repeat: repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  user-select: none;
+}
+</style>
 

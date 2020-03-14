@@ -14,29 +14,14 @@ export default {
     };
   },
   beforeCreate: function() {
-    if (!document.body.classList.length > 0) {
-      document.body.classList.add("newGame");
-    } else {
-      document.body.classList.replace(document.body.classList[0], "newGame");
-    }
+    document.getElementsByTagName("body")[0].style.backgroundImage =
+      'url("http://localhost:8000/dist/background/start1.png")';
   },
   created: function() {
     sessionStorage.clear();
   }
 };
 </script>
-
-<style>
-.newGame {
-  font-family: cursive;
-  background-repeat: repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-  background-image: url("http://localhost:8000/dist/background/start1.png");
-  user-select: none;
-}
-</style>
 
 <style lang='css' scoped>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);

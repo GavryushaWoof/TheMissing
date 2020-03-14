@@ -49,17 +49,9 @@ export default {
     i: "createdContent"
   },
   beforeCreate: function() {
-    if (!document.body.classList.length > 0) {
-      document.body.classList.add("selectedRoom");
-    } else {
-      document.body.classList.replace(
-        document.body.classList[0],
-        "selectedRoom"
-      );
-      document.getElementsByTagName("body")[0].style.backgroundImage = `url(${
-        JSON.parse(sessionStorage.getItem("pokemon")).background
-      })`;
-    }
+    document.getElementsByTagName("body")[0].style.backgroundImage = `url(${
+      JSON.parse(sessionStorage.getItem("pokemon")).background
+    })`;
   },
   created: function() {
     this.createdContent();
