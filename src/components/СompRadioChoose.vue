@@ -7,48 +7,38 @@
       <div>
         <p class="name">{{name}}</p>
       </div>
-      <div>
-        <p class="text">{{text}}</p>
+      <div class="conteinerRadio">
+        <label v-for="(place, index) in places" :key="index">
+          <input type="radio" name="whatKindOfPlace" :value="index" @change="onRadio">
+          <span>{{place.name}}</span>
+        </label>
       </div>
-      <div v-if="text==='' && player===false">
-        <input type="text" @input="$emit('input', $event)" placeholder='Введите имя' value>
-      </div>
-      <button class="arrow" @click="$emit('nextText')">&#10158;</button>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ["name", "text", "src", "player"]
+  props: ["name", "src", "places"],
+  methods: {
+    onRadio(i) {
+      const place = this.$props.places[i.target.value];
+      const pokemon = JSON.parse(sessionStorage.getItem("pokemon"));
+      if (place.type === pokemon.type) {
+        this.$router.push({ path: `/selectedRoom` });
+      } else {
+        this.$router.push({ path: `/wrongRoom` });
+      }
+    }
+  }
 };
 </script>
 
 <style lang='css' scoped>
-.text {
-  margin: 5px 20px 0px;
+.conteinerRadio {
+  display: flex;
+  justify-content: center;
 }
-
-#container {
-  font-size: 1.5em;
-  height: 15vw;
-  padding: 5px;
-  background: #c4e6f3e6;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-button {
-  height: 100px;
-  width: 100px;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  border: none;
-  background: none;
-  font-size: 3em;
+label {
+  margin: 0 20px 0;
 }
 </style>

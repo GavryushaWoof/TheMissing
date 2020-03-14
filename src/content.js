@@ -56,13 +56,21 @@ const content = {
             name: 'Мисти',
             text: 'Тебе стоит проверить любимое место твоего покемона. Посмотри в своем покедексе.',
             player: false,
-        }, {
+        },
+    ],
+    choiceRoom: [{
             name: '',
             text: 'Так его тип [[pokemonType]], думаю я знаю, где его искать.',
             player: true,
             img: 'http://localhost:8000/dist/things/pokedex.png'
         },
-    ],
+        {
+            name: '',
+            text: '',
+            player: true,
+
+        },
+    ]
 }
 export const pokemons = [{
         name: 'Бульбазавр',
@@ -91,6 +99,23 @@ export const pokemons = [{
         background: 'http://localhost:8000/dist/background/pikachuBackground.jpg',
         img: 'http://localhost:8000/dist/pokemon/pikachu.png',
         gif: 'http://localhost:8000/dist/pokemon/pikachu.gif',
+    },
+]
+export const places = [{
+        name: 'Тайный сад',
+        type: 'трава',
+    },
+    {
+        name: 'Старый вулкан',
+        type: 'огонь',
+    },
+    {
+        name: 'Тихое озеро',
+        type: 'вода',
+    },
+    {
+        name: 'Лес',
+        type: 'электричество',
     },
 ]
 

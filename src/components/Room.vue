@@ -50,7 +50,7 @@ export default {
       sessionStorage.setItem("pokemon", JSON.stringify(value));
     },
     nextRoot() {
-      this.$router.push({ path: "/" });
+      this.$router.push({ path: "/choiceRoom" });
     },
     userName(value) {
       sessionStorage.setItem("name", value);
@@ -82,6 +82,4 @@ export default {
   background-image: url("http://localhost:8000/dist/background/room.jpg");
   user-select: none;
 }
-</style>
-<style lang='css' scoped>
 </style>
