@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <audio id=song src='http://localhost:8000/dist/song/song.mp3' type="audio/mpeg" autoplay loop></audio>
+    <audioControl />
     <div>
       <router-view></router-view>
     </div>
@@ -8,11 +8,12 @@
 </template>
 
 <script>
-// window.onload = function() {
-//   var context = new AudioContext();
-// };
+import audioControl from "./components/AudioControl.vue";
 export default {
-  name: "app"
+  name: "app",
+  components: {
+    audioControl
+  }
 };
 </script>
 

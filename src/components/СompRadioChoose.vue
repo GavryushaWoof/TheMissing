@@ -13,7 +13,7 @@
       <div v-if="text==='' && player===false">
         <input type="text" @input="$emit('input', $event)" placeholder='Введите имя' value>
       </div>
-      <button @click="$emit('nextText')">&#10158;</button>
+      <button class="arrow" @click="$emit('nextText')">&#10158;</button>
     </div>
   </div>
 </template>

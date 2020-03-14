@@ -7,10 +7,10 @@
       <div>
         <p class="name">{{name}}</p>
       </div>
-      <div>
+      <div class="contentText">
         <p class="text">{{text}}</p>
       </div>
-      <button @click="$emit('nextText')">&#10158;</button>
+      <button class="arrow" @click="$emit('nextText')">&#10158;</button>
     </div>
   </div>
 </template>
@@ -19,3 +19,8 @@ export default {
   props: ["name", "text", "src"]
 };
 </script>
+<style>
+.contentText {
+  width: calc(100% - 100px);
+}
+</style>

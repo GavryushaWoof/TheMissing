@@ -8,10 +8,10 @@
 
 <style lang='css'>
 .speaker {
-  height: 45.5vw;
+  height: 95vh;
   position: fixed;
   bottom: 0px;
-  right: 300px;
+  right: 20%;
 }
 .text {
   margin: 5px 30px 0px;
@@ -25,7 +25,7 @@
 
 #container {
   font-size: 1.5em;
-  height: 15vw;
+  height: 30vh;
   padding: 5px;
   background: #c4e6f3e6;
   width: 100vw;
@@ -35,7 +35,7 @@
   right: 0;
 }
 
-button {
+.arrow {
   height: 100px;
   width: 100px;
   padding: 0;

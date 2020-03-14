@@ -10,7 +10,7 @@
       <div class="conteinerInput">
         <input type="text" @input="onInput" placeholder='Введите имя' value>
       </div>
-      <button @click="$emit('nextText')" :disabled='disabledButton'>&#10158;</button>
+      <button class="arrow" @click="$emit('nextText')" :disabled='disabledButton'>&#10158;</button>
     </div>
   </div>
 </template>
