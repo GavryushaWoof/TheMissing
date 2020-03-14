@@ -17,7 +17,7 @@ const content = {
         },
         {
             name: 'Мисти',
-            text: 'Я Мисти лучший рыболов и повец покемонов водного типа в этой деревне. Приятно познакомиться.',
+            text: 'Я - Мисти, лучший рыболов и ловец покемонов водного типа в этой деревне. Приятно познакомиться.',
             player: false,
             img: 'http://localhost:8000/dist/person/Misty_pokemon.png'
         },
@@ -28,7 +28,7 @@ const content = {
         },
         {
             name: '',
-            text: 'Дорога потребовала больше сил и времени, чем я планировал. Так что я просто свалился без чувств, когда понял, что дошел. Прости.',
+            text: 'Прости. Дорога потребовала больше сил и времени, чем я планировал. Так что я просто свалился без чувств, когда понял, что дошел.',
             player: true,
         },
         {
@@ -49,13 +49,18 @@ const content = {
         },
         {
             name: 'Мисти',
-            text: 'Похоже низкоуровневый покемон испугался. Я думаю он мог спрятоться неподалеку.',
+            text: 'Похоже низкоуровневый покемон испугался. Я думаю, он мог спрятаться неподалеку.',
             player: false,
         },
         {
             name: 'Мисти',
-            text: 'Тебе стоит проверить люимое место твоего покемона. Посмотри в своем покедексе.',
+            text: 'Тебе стоит проверить любимое место твоего покемона. Посмотри в своем покедексе.',
             player: false,
+        }, {
+            name: '',
+            text: 'Так его тип [[pokemonType]], думаю я знаю, где его искать.',
+            player: true,
+            img: 'http://localhost:8000/dist/things/pokedex.png'
         },
     ],
 }
@@ -101,7 +106,11 @@ export function addContent(root, i, src) {
         } else {
             name = sessionStorage.getItem('name')
         }
+        const pokemonType = JSON.parse(sessionStorage.getItem('pokemon'));
         text = content[root][i].text;
+        if (pokemonType) {
+            text = text.replace('[[pokemonType]]', pokemonType.type);
+        }
         if (content[root][i].img) {
             src = content[root][i].img
         }
