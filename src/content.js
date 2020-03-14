@@ -70,7 +70,13 @@ const content = {
             player: true,
 
         },
-    ]
+    ],
+    wrongRoom: [{
+        name: '',
+        text: 'Думаю, [[pokemonName]] не отправился бы туда. Хм, стоит проверить данные в покедексе еще раз.',
+        player: true,
+        img: 'http://localhost:8000/dist/things/pokedex.png'
+    }, ]
 }
 export const pokemons = [{
         name: 'Бульбазавр',
@@ -131,10 +137,11 @@ export function addContent(root, i, src) {
         } else {
             name = sessionStorage.getItem('name')
         }
-        const pokemonType = JSON.parse(sessionStorage.getItem('pokemon'));
+        const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
         text = content[root][i].text;
-        if (pokemonType) {
-            text = text.replace('[[pokemonType]]', pokemonType.type);
+        if (pokemon) {
+            text = text.replace('[[pokemonType]]', pokemon.type);
+            text = text.replace('[[pokemonName]]', pokemon.name);
         }
         if (content[root][i].img) {
             src = content[root][i].img
